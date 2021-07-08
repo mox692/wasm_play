@@ -8,14 +8,6 @@
     <input type="text" id="wasm_file_name" placeholder="input wasm file" />
     <input onClick="run();" type="button" id="wasm_run" value="run wasm!!" />
     <script>
-      var importObject = {
-        console: {
-          log: function (arg) {
-            console.log(arg);
-          },
-        },
-      };
-
       async function run() {
         const textBox = document.getElementById("wasm_file_name");
         const wasmFileName = textBox.value;
@@ -24,6 +16,11 @@
           console: {
             log: function (arg) {
               console.log(arg);
+            },
+          },
+          calc: {
+            add: function (a, b) {
+              return a + b;
             },
           },
         };
@@ -40,6 +37,10 @@
             }
             case "step4.wasm": {
               obj.instance.exports.logIt();
+              break;
+            }
+            case "step4_1.wasm": {
+              console.log(obj.instance.exports.runAddFn());
               break;
             }
           }

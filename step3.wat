@@ -1,5 +1,4 @@
 ;; calling another function inside module.
-
 (module
   (func $getAnswer (result i32)
     i32.const 42)   ;; このように書くと、単純にi32定数をstackにpushする事になる

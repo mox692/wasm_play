@@ -1,5 +1,3 @@
-
-
 (module
   (import "console" "log" (func $log (param i32)))  ;; importObjectのconsole.logを探しに行っている
   (func (export "logIt")
