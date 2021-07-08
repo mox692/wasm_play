@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>WebAssembly</title>
+  </head>
+  <body>
+    <input type="text" id="wasm_file_name" placeholder="input wasm file" />
+    <input onClick="run();" type="button" id="wasm_run" value="run wasm!!" />
+    <script>
+      var importObject = {
+        console: {
+          log: function (arg) {
+            console.log(arg);
+          },
+        },
+      };
+
+      async function run() {
+        const textBox = document.getElementById("wasm_file_name");
+        const wasmFileName = textBox.value;
+
+        const importObject = {
+          console: {
+            log: function (arg) {
+              console.log(arg);
+            },
+          },
+        };
+
+        WebAssembly.instantiateStreaming(
+          fetch(wasmFileName),
+          importObject
+        ).then((obj) => {
+          // Call an exported function:
+          switch (wasmFileName) {
+            case "step3.wasm": {
+              console.log(obj.instance.exports.getAnswerPlus1());
+              break;
+            }
+            case "step4.wasm": {
+              obj.instance.exports.logIt();
+              break;
+            }
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
