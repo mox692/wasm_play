@@ -1,3 +1,6 @@
+;; watにおけるfunctionのsyntax(引数, 返り値, export etc...)
+;; stackマシン的な扱い
+
 (module
   (func $add (param $lhs i32) (param $rhs i32) (result i32)
     local.get $lhs  ;; stackに第1引数をpush

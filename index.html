@@ -31,8 +31,16 @@
         ).then((obj) => {
           // Call an exported function:
           switch (wasmFileName) {
+            case "step2_1.wasm": {
+              console.log(obj.instance.exports.sub(4, 5));
+              break;
+            }
             case "step3.wasm": {
               console.log(obj.instance.exports.getAnswerPlus1());
+              break;
+            }
+            case "step3_1.wasm": {
+              console.log(obj.instance.exports.calc(3, 5)); // 80
               break;
             }
             case "step4.wasm": {

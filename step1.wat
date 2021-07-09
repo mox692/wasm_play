@@ -1,3 +1,5 @@
+;; watでcompile可能な最小のmodule
+
 (module)
 
 ;; This .wat will be compiled like below,
